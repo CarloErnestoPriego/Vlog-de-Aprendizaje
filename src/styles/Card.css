@@ -1,0 +1,24 @@
+.main-container {
+    margin: 15px;
+    padding: 15px;
+    background-color: blue;
+    border-radius: 15px;
+    display: flex;
+    width: 65%;
+    margin-left: 16%;
+}
+
+.username-container {
+    color: gray;
+    font-style: italic;
+}
+
+.avatar-post {
+    border-radius: 100px;
+    height: 50px;
+    font-style: Verdana, Arial;
+}
+
+.info-container {
+    padding-left: 15px;
+}
