@@ -12,21 +12,22 @@ export const useGetPosts = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const data = await getPost();
-        setPosts(data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchPosts = async () => {
+    try {
+      const data = await getPost();
+      setPosts(Array.isArray(data) ? data : data.posts || []);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchPosts();
-  }, []);
+  fetchPosts();
+}, []);
 
   return { posts, loading, error };
+
 };
 
 export const useSavePost = () => {

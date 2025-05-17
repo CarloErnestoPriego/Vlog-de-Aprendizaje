@@ -1,5 +1,6 @@
 import Card from './Components/Card'
 import Button from './Components/Button'
+import PostList from './Components/Posts/PostList'
 
 import spiderIcon from './assets/images/spiderman-icon.jpg'
 import valorantIcon from './assets/images/valorant-icon.png'
@@ -25,6 +26,9 @@ function App() {
       <Button
       text='enviar'
       />
+
+      <PostList />
+
     </>
   )
 }

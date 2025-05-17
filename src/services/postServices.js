@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const postService = axios.create({
-    baseURL: 'http://127.0.0.1/gestorOpiniones/v1/',
+    baseURL: 'http://127.0.0.1:3000/gestorOpiniones/v1/',
     timeout: 5000
 });
 
@@ -17,7 +17,7 @@ export const savePost = async(postData) => {
 
 export const getPost = async () => {
     try {
-        const response = await axios.get('posts/');
+        const response = await postService.get('posts/');
         return response.data;
     } catch (error) {
         console.log('no se pudo obtener las publicaciones', error);
