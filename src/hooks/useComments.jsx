@@ -1,0 +1,87 @@
+import { useState, useEffect } from "react";
+import {
+  postComment,
+  getComment,
+  updateComment,
+  deleteComment,
+} from "../services/commentService.js";
+
+export const useGetComments = () => {
+  const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const data = await getComment();
+        setComments(data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchComments();
+  }, []);
+
+  return { comments, loading, error };
+};
+
+export const usePostComment = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const createComment = async (postId, commentData) => {
+    setLoading(true);
+    try {
+      return await postComment(postId, commentData);
+    } catch (err) {
+      setError(err);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { createComment, loading, error };
+};
+
+export const useUpdateComment = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const modifyComment = async (commentId, commentData) => {
+    setLoading(true);
+    try {
+      return await updateComment(commentId, commentData);
+    } catch (err) {
+      setError(err);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { modifyComment, loading, error };
+};
+
+export const useDeleteComment = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const removeComment = async (commentId) => {
+    setLoading(true);
+    try {
+      return await deleteComment(commentId);
+    } catch (err) {
+      setError(err);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { removeComment, loading, error };
+};
