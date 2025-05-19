@@ -19,7 +19,6 @@ const PostForm = ({ onSubmit }) => {
     setLoading(true);
     try {
       await onSubmit({ titulo, categoria, descripcion });
-      // Limpiar formulario al enviar correctamente
       setTitulo("");
       setCategoria("");
       setDescripcion("");

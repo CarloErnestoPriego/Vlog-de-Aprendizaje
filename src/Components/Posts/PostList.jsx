@@ -5,7 +5,7 @@ import { useGetPosts } from "../../hooks/usePosts";
 import Card from "../Card";
 import Button from "../Button";
 
-import personaIcon from '../../assets/images/persona-icon.png';
+import personaIcon from "../../assets/images/persona-icon.png";
 
 const PostList = () => {
   const { posts, loading, error } = useGetPosts();
@@ -15,15 +15,16 @@ const PostList = () => {
 
   return (
     <div>
-      <Button text="Crear post" />
       <div>
         {posts.map((post) => (
           <Card
             key={post._id}
             image={personaIcon}
-            username={post.idAutor || "Usuario Anónimo"}
+            username={post.autor.username}
             title={post.titulo}
+            category={post.categoria}
             postContent={post.descripcion}
+            postId={post._id}
           />
         ))}
       </div>
