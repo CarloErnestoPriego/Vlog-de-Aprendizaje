@@ -1,13 +1,16 @@
 .comment-section {
   margin-top: 20px;
-  border-top: 1px solid #ddd;
-  padding-top: 15px;
+  padding: 15px 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 100%;
 }
 
 .comment-form {
   display: flex;
-  gap: 10px;
-  align-items: center;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
@@ -15,44 +18,43 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.comment-list::-webkit-scrollbar {
+  width: 7px;
+}
+
+.comment-list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
 }
 
 .comment-item {
-  display: flex;
-  align-items: flex-start;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 14px 18px;
   margin-bottom: 15px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.25s ease;
 }
 
-.comment-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #0077cc;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 10px;
-}
-
-.comment-content {
-  background-color: #f1f1f1;
-  padding: 10px 14px;
-  border-radius: 8px;
-  max-width: 80%;
+.comment-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .comment-author {
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #222;
   margin-bottom: 4px;
-  display: block;
 }
 
 .comment-text {
-  margin: 0;
-  font-size: 14px;
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
   color: #333;
+  white-space: pre-wrap;
 }

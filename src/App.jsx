@@ -4,11 +4,9 @@ import PostList from './Components/Posts/PostList'
 import spiderIcon from './assets/images/spiderman-icon.jpg'
 import valorantIcon from './assets/images/valorant-icon.png'
 
-import { useState } from 'react'
 import './styles/App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>

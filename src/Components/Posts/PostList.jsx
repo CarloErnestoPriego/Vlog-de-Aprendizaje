@@ -3,7 +3,6 @@ import React from "react";
 import { useGetPosts } from "../../hooks/usePosts";
 
 import Card from "../Card";
-import Button from "../Button";
 
 import personaIcon from "../../assets/images/persona-icon.png";
 
@@ -25,6 +24,7 @@ const PostList = () => {
             category={post.categoria}
             postContent={post.descripcion}
             postId={post._id}
+            comentarios={post.comentarios}
           />
         ))}
       </div>

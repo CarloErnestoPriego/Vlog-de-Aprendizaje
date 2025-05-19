@@ -25,22 +25,3 @@ export const getComment = async() => {
     }
 }
 
-export const updateComment = async (id, commentData) => {
-    try {
-        const response = await commentService.put(`comment/${id}`, commentData)
-        return response.data;
-    } catch (error) {
-        console.log('Error al actualizar commentario: ', error);
-        throw error
-    }
-}
-
-export const deleteComment = async (id) => {
-    try {
-        const response = await commentService.delete(`comments/${id}`)
-        return response.data;
-    } catch (error) {
-        console.log('Error al eliminar comentario: ', error);
-        throw error
-    }
-}
