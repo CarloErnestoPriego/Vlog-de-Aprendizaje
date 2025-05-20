@@ -6,7 +6,15 @@ import Input from "./Input";
 import Button from "./Button";
 import { usePostComment } from "../hooks/useComments";
 
-const Card = ({ image, username, title, category, postContent, postId, comentarios }) => {
+const Card = ({
+  image,
+  username,
+  title,
+  category,
+  postContent,
+  postId,
+  comentarios,
+}) => {
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState(comentarios || []);
   const { createComment, loading: loadingPostComment } = usePostComment();
@@ -23,15 +31,18 @@ const Card = ({ image, username, title, category, postContent, postId, comentari
       setComments((prev) => [
         ...prev,
         {
-          id: newComment.id || Date.now().toString(),
+          id: newComment?.id || Date.now().toString(),
           comment: commentText,
-          author: "Usuario fijo",
+          author: "User",
         },
       ]);
 
       setCommentText("");
     } catch (error) {
       console.error("Error al comentar:", error);
+      if (error.response?.data?.errors) {
+        console.error("Errores de validación:", error.response.data.errors);
+      }
     }
   };
 
@@ -78,10 +89,12 @@ const Card = ({ image, username, title, category, postContent, postId, comentari
           <ul className="comment-list" style={{ paddingLeft: 0 }}>
             {comments.length === 0 && <p>No hay comentarios aún.</p>}
             {comments.map((c) => (
-              <li className="comment-item" key={c.id}>
+              <li className="comment-item" key={c._id || c.id}>
                 <div className="comment-content">
-                  <span className="comment-author">{c.author || "Usuario"}</span>
-                  <p className="comment-text">{c.comment}</p>
+                  <span className="comment-author">
+                    {c.author || c.autor || "Usuario"}
+                  </span>
+                  <p className="comment-text">{c.comment || c.text || c.texto}</p>
                 </div>
               </li>
             ))}

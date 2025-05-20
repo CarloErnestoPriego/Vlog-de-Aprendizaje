@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  postComment,
-  getComment
-} from "../services/commentService.js";
+import { postComment, getComment } from "../services/commentService.js";
 
 export const useGetComments = () => {
   const [comments, setComments] = useState([]);
@@ -34,7 +31,12 @@ export const usePostComment = () => {
   const createComment = async (postId, commentData) => {
     setLoading(true);
     try {
-      return await postComment(postId, commentData);
+      const fullCommentData = {
+        ...commentData,
+        postId,
+      };
+
+      return await postComment(fullCommentData);
     } catch (err) {
       setError(err);
       throw err;
